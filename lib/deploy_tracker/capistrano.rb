@@ -1,19 +1,46 @@
-# partially borrowed from hoptoad_notifier
+require 'net/https'
+# hack to eliminate the SSL certificate verification notification
+class Net::HTTP
+  alias_method :old_initialize, :initialize
+  def initialize(*args)
+    old_initialize(*args)
+    @ssl_context = OpenSSL::SSL::SSLContext.new
+    @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  end
+end
 
 Capistrano::Configuration.instance(:must_exist).load do
-  before "deploy",            "deploy:track"
-  # after "deploy:migrations", "deploy:track"
+  after "deploy",            "deploy:track"
+  after "deploy:migrations", "deploy:track"
 
   namespace :deploy do
     desc "Send deployment to deploytracker.com"
     task :track, :except => { :no_release => true } do
       rails_env = fetch(:rails_env, "production")
-      local_user = ENV['USER'] || ENV['USERNAME']
       executable = RUBY_PLATFORM.downcase.include?('mswin') ? 'rake.bat' : 'rake'
-      notify_command = "#{executable} deploy_tracker:notify ENV=#{rails_env} REVISION=#{current_revision} REPO=#{repository} USER=#{local_user}"
-      puts "Tracking Deployment"
-      `#{notify_command}`
-      puts "Successfully Tracked Deployment."
+
+      puts "[DeployTracker] Tracking Deployment"
+
+      github_username = `git config --get github.user`.chomp
+      throw "[DeployTracker] Please set your github username with...\n\t`git config --global github.user YOUR_GITHUB_USERNAME`." if github_username.size==0
+      url = URI.parse('https://deploytracking.heroku.com/deploys')
+
+      data = "deploy[github_username]=#{github_username}&deploy[environment]=#{rails_env}&deploy[current_revision]=#{current_revision}&deploy[repository]=#{repository}&api_key=#{deploy_tracking_api_key}"
+
+      http = Net::HTTP.new('deploytracking.heroku.com', 443)
+      http.use_ssl = true
+      path = '/deploys'
+
+      headers = {
+        'Content-Type' => 'application/x-www-form-urlencoded'
+      }
+      resp, data = begin
+                   http.post(path, data, headers)
+                 rescue TimeoutError => e
+                   throw "[DeployTracker] Connection timed out."
+                 end
+      throw "[DeployTracker] Error posting to server." unless resp.is_a?(Net::HTTPSuccess)
+      puts "[DeployTracker] Deployment tracked"
     end
   end
 end
