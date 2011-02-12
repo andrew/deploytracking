@@ -23,7 +23,6 @@ Capistrano::Configuration.instance(:must_exist).load do
 
       github_username = `git config --get github.user`.chomp
       throw "[DeployTracker] Please set your github username with...\n\t`git config --global github.user YOUR_GITHUB_USERNAME`." if github_username.size==0
-      url = URI.parse('https://deploytracking.heroku.com/deploys')
 
       data = "deploy[github_username]=#{github_username}&deploy[environment]=#{rails_env}&deploy[revision]=#{current_revision}&deploy[repository]=#{repository}&api_key=#{deploy_tracking_api_key}"
 
