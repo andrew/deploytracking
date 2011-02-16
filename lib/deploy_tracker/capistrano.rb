@@ -26,7 +26,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       github_username = `git config --get github.user`.chomp
       throw "[DeployTracker] Please set your github username with...\n\t`git config --global github.user YOUR_GITHUB_USERNAME`." if github_username.size==0
 
-      data = "deploy[github_username]=#{github_username}&deploy[environment]=#{rails_env}&deploy[revision]=#{current_revision}&deploy[repository]=#{repository}&api_key=#{deploy_tracking_api_key}&source=capistrano&branch=#{branch}&user_email=#{email}"
+      data = "deploy[github_username]=#{github_username}&deploy[environment]=#{rails_env}&deploy[revision]=#{current_revision}&deploy[repository]=#{repository}&api_key=#{deploy_tracking_api_key}&deploy[source]=capistrano&deploy[branch]=#{branch}&deploy[user_email]=#{email}"
 
       http = Net::HTTP.new('deploytracking.heroku.com', 443)
       http.use_ssl = true
