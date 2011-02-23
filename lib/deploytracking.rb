@@ -1,11 +1,21 @@
 require 'net/https'
 
 module DeployTracking
+
+  # Send data via a secure socket
   USE_SSL = true
+
+  # The domain name of the deploytracking web app
   DEPLOY_TRACKING_HOST = 'deploytracking.heroku.com'
+
+  # The relative end point of the service
   DEPLOY_TRACKING_PATH = '/deploys'
+
+  # SSL port number that the service is available on
   DEPLOY_TRACKING_PORT = 443
 
+  # Notify the deploytracking webservice of a new deployment
+  # with a payload of data from capistrano.
   def self.notify(api_key, data)
     puts "[DeployTracking] Tracking Deployment to #{DEPLOY_TRACKING_HOST}"
 
