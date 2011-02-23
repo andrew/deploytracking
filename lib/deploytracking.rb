@@ -21,5 +21,6 @@ module DeployTracking
 
     throw "[DeployTracking] Error posting to server." unless response.is_a?(Net::HTTPSuccess)
     puts "[DeployTracking] Deployment tracked"
+    return response
   end
 end
