@@ -9,7 +9,7 @@ module DeployTracking
   def self.notify(api_key, data)
     puts "[DeployTracking] Tracking Deployment to #{DEPLOY_TRACKING_HOST}"
 
-    params = {'api_key' => api_key}
+    params = {'api_key' => api_key, 'deploy["gem_version"]' => DeployTracking::VERSION}
     data.each {|k,v| params["deploy[#{k}]"] = v }
 
     http = Net::HTTP.new(DEPLOY_TRACKING_HOST, DEPLOY_TRACKING_PORT)
