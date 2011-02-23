@@ -1,13 +1,13 @@
 require 'net/https'
 
-module DeployTracker
+module DeployTracking
   USE_SSL = true
   DEPLOY_TRACKING_HOST = 'deploytracking.heroku.com'
   DEPLOY_TRACKING_PATH = '/deploys'
   DEPLOY_TRACKING_PORT = 443
 
   def self.notify(api_key, data)
-    puts "[DeployTracker] Tracking Deployment to #{DEPLOY_TRACKING_HOST}"
+    puts "[DeployTracking] Tracking Deployment to #{DEPLOY_TRACKING_HOST}"
 
     params = {'api_key' => api_key}
     data.each {|k,v| params["deploy[#{k}]"] = v }
@@ -19,7 +19,7 @@ module DeployTracker
     request.set_form_data(params)
     response = http.request(request)
 
-    throw "[DeployTracker] Error posting to server." unless response.is_a?(Net::HTTPSuccess)
-    puts "[DeployTracker] Deployment tracked"
+    throw "[DeployTracking] Error posting to server." unless response.is_a?(Net::HTTPSuccess)
+    puts "[DeployTracking] Deployment tracked"
   end
 end

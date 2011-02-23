@@ -3,34 +3,21 @@ Deploy Tracker
 
 Capistrano plugin for <http://deploytracking.com>
 
-Rails 3 Install
+Install
 ---------------
 
 In your Gemfile add:
 
-    gem 'deploy_tracker'
+    gem 'deploytracking'
 
 Place the following line at the bottom config/deploy.rb:
 
     set :deploy_tracking_api_key, 'YOURAPIKEY'
-    require 'config/boot'
-    require 'deploy_tracker/capistrano'
+    require 'deploytracking/capistrano'
 
 Then run:
 
     bundle install
-
-Sinatra/Rails 2 Install
------------------------
-
-Install the gem:
-
-    gem install deploy_tracker
-
-Place the following line at the bottom config/deploy.rb:
-
-    set :deploy_tracking_api_key, 'YOURAPIKEY'
-    require 'deploy_tracker/capistrano'
 
 Note on Patches/Pull Requests
 -----------------------------

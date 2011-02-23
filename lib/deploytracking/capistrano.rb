@@ -14,7 +14,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       data['source']          = fetch(:source, 'capistrano')
       data['branch']          = fetch(:branch, 'master')
 
-      DeployTracker.notify(fetch(:deploy_tracking_api_key), data)
+      DeployTracking.notify(fetch(:deploy_tracking_api_key), data)
     end
   end
 end

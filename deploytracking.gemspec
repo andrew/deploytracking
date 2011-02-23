@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "deploy_tracker/version"
+require "deploytracking/version"
 
 Gem::Specification.new do |s|
-  s.name        = "deploy_tracker"
-  s.version     = DeployTracker::VERSION
+  s.name        = "deploytracking"
+  s.version     = DeployTracking::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Nesbitt"]
   s.email       = ["andrewnez@gmail.com"]
