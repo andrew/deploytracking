@@ -12,7 +12,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       data['environment']     = fetch(:rails_env, "production")
       data['revision']        = fetch(:current_revision)
       data['repository']      = fetch(:repository)
-      data['source']          = fetch(:source, 'capistrano')
+      data['source']          = fetch(:deploy_source, 'capistrano')
       data['branch']          = fetch(:branch, 'master')
 
       DeployTracking.notify(fetch(:deploy_tracking_api_key), data)
