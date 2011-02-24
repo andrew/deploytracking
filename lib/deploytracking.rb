@@ -1,4 +1,5 @@
 require 'net/https'
+require 'deploytracking/version'
 
 module DeployTracking
 

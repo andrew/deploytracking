@@ -1,3 +1,4 @@
+require 'deploytracking'
 Capistrano::Configuration.instance(:must_exist).load do
   after "deploy",            "deploy:track"
   after "deploy:migrations", "deploy:track"
