@@ -22,5 +22,5 @@ PLATFORMS
 
 DEPENDENCIES
   deploytracking!
-  fakeweb
-  rspec
+  fakeweb (~> 1.3.0)
+  rspec (~> 2.5.0)
