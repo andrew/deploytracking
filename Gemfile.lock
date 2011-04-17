@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deploytracking (0.0.9)
+    deploytracking (0.1.0)
 
 GEM
   remote: http://rubygems.org/
