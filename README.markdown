@@ -3,6 +3,10 @@ Deploy Tracker
 
 Capistrano plugin for <http://deploytracking.com>
 
+[![Gem Version](https://badge.fury.io/rb/deploytracking.png)](http://badge.fury.io/rb/deploytracking)
+[![Build Status](https://secure.travis-ci.org/andrew/deploytracking.png?branch=master)](http://travis-ci.org/andrew/deploytracking)
+[![Dependency Status](https://gemnasium.com/andrew/deploytracking.png)](https://gemnasium.com/andrew/deploytracking)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/andrew/deploytracking)
 Install
 ---------------
 
@@ -33,5 +37,4 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-
-Copyright (c) 2011 Andrew Nesbitt. See LICENSE for details.
+Copyright (c) 2013 Andrew Nesbitt. See LICENSE for details.
