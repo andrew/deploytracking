@@ -12,16 +12,22 @@ Install
 
 In your Gemfile add:
 
-    gem 'deploytracking'
+```ruby
+gem 'deploytracking'
+```
 
 Place the following line at the bottom config/deploy.rb:
 
-    set :deploy_tracking_api_key, 'YOURAPIKEY'
-    require 'deploytracking/capistrano'
+```ruby
+set :deploy_tracking_api_key, 'YOURAPIKEY'
+require 'deploytracking/capistrano'
+```
 
 Then run:
 
-    bundle install
+```bash
+bundle install
+```
 
 Note on Patches/Pull Requests
 -----------------------------
