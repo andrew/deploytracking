@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://deploytracking.com"
   s.summary     = %q{Track deployments to deploytracking.com}
   s.description = %q{Keep a record of all your deployments with interesting stats and history of all deployments with capistrano}
+  s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
