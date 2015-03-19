@@ -1,4 +1,4 @@
-Deploy Tracker
+[Deploy Tracker](http://libraries.io/rubygems/deploytracking)
 ==============
 
 Capistrano plugin for <http://deploytracking.com>
